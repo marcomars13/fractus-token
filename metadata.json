@@ -1,0 +1,10 @@
+{
+  "name": "Fractus",
+  "symbol": "FRA",
+  "description": "Fractus Token – énergie fractale sur Solana (Devnet).",
+  "image": "https://raw.githubusercontent.com/marcomars13/fractus-token/main/logo.png",
+  "extensions": {
+    "website": "https://example.com/fractus",
+    "github": "https://github.com/marcomars13/fractus-token"
+  }
+}
