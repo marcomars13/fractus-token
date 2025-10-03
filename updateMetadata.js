@@ -2,11 +2,9 @@ const { Connection, clusterApiUrl, Keypair, PublicKey } = require('@solana/web3.
 const { Metaplex, keypairIdentity } = require('@metaplex-foundation/js');
 const fs = require('fs');
 
-// Charger ta keypair locale
 const secret = JSON.parse(fs.readFileSync("/Users/marco/my-keypair.json"));
 const keypair = Keypair.fromSecretKey(Uint8Array.from(secret));
 
-// Connexion Devnet
 const connection = new Connection(clusterApiUrl('devnet'));
 const metaplex = Metaplex.make(connection).use(keypairIdentity(keypair));
 
@@ -15,14 +13,14 @@ const metaplex = Metaplex.make(connection).use(keypairIdentity(keypair));
   const uri = "https://raw.githubusercontent.com/marcomars13/fractus-token/main/metadata.json";
 
   try {
-    const { nft } = await metaplex.nfts().update({
+    await metaplex.tokens().update({
       mintAddress: mint,
       name: "Fractus",
       symbol: "FRA",
-      uri: uri
+      uri: uri,
     });
 
-    console.log("✅ Metadata updated for", nft.address.toBase58());
+    console.log("✅ Metadata updated for", mint.toBase58());
   } catch (err) {
     console.error("❌ Error updating metadata:", err);
   }
